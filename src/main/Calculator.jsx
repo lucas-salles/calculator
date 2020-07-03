@@ -35,7 +35,24 @@ export default class Calculator extends Component {
 
       const values = [...this.state.values];
       try {
-        values[0] = eval(`${values[0]} ${currentOperation} ${values[1]}`);
+        switch (currentOperation) {
+          case "+":
+            values[0] = values[0] + values[1];
+            break;
+          case "-":
+            values[0] = values[0] - values[1];
+            break;
+          case "*":
+            values[0] = values[0] * values[1];
+            break;
+          case "/":
+            values[0] = values[0] / values[1];
+            break;
+          default:
+            break;
+        }
+
+        // values[0] = eval(`${values[0]} ${currentOperation} ${values[1]}`);
       } catch (e) {
         values[0] = this.state.values[0];
       }
@@ -68,7 +85,6 @@ export default class Calculator extends Component {
       const values = [...this.state.values];
       values[i] = newValue;
       this.setState({ values });
-      console.log(values);
     }
   }
 
